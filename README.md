@@ -1,9 +1,8 @@
-# \[Group name\]
+# Sarah og Pernille
 
 **Group members:**
-- A
-- B
-- C
+- Sarah
+- Pernille
 
 This repository contains  
 1. Inaugural project. 

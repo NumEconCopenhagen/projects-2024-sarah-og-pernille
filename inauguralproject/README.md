@@ -1,6 +1,6 @@
 # Inaugural project
 
-**Group members**:Sarah Rosenkrans Nielsen (zbd184) andPernille Heiselberg (knw498).
+**Group members**: Sarah Rosenkrans Nielsen (zbd184) and Pernille Heiselberg (knw498).
 
 The **results** of the project can be seen from running [inauguralproject.ipynb](inauguralproject.ipynb) with the file [inauguralproject.py](inauguralproject.py). 
 

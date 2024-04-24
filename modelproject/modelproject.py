@@ -1,5 +1,12 @@
 from scipy import optimize
 
+class ASAD:
+    
+
+
+
+
+
 def solve_ss(alpha, c):
     """ Example function. Solve for steady state k. 
 

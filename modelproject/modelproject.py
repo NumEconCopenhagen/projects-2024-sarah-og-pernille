@@ -1,1 +1,4 @@
-from scipy import optimize
+import matplotlib.pyplot as plt
+
+
+

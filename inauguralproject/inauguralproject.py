@@ -62,3 +62,16 @@ class ExchangeEconomyClass:
         eps2 = x2A-par.w2A + x2B-(1-par.w2A)
 
         return eps1,eps2
+    
+    def check_market_clearing_endowment(self, w1A, w2A, w1B, w2B, p1):
+
+        par = self.par
+
+        x1A,x2A = self.demand_A_endowment(w1A, w2A, p1)
+        x1B,x2B = self.demand_B_endowment(w1B, w2B, p1)
+
+        eps1 = x1A-w1A + x1B-(1-w1A) 
+        eps2 = x2A-w2A + x2B-(1-w2A) 
+
+        return eps1,eps2
+    

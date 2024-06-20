@@ -85,12 +85,26 @@ class SolowModelTech:
     def steady_state_capital_t(self):
         solow_ss_k_t = lambda k: k - ((self.s * k ** self.alpha + (1 - self.delta) * k) / ((1 + self.n) * (1 + self.g)))
         result_k_t = optimize.root_scalar(solow_ss_k_t, bracket=[0.1, 100], method='brentq')
+        print(result_k_t)
         return result_k_t.root
 
     def steady_state_output_t(self, k_star):
         solow_ss_y_t = lambda y: y - (k_star ** self.alpha)
         result_y_t = optimize.root_scalar(solow_ss_y_t, bracket=[0.1, 100], method='brentq')
+        print(result_y_t)
         return result_y_t.root
+    
+    def steady_state_capital_t_bisect(self):
+        solow_ss_k_t_bisect = lambda k: k - ((self.s * k ** self.alpha + (1 - self.delta) * k) / ((1 + self.n) * (1 + self.g)))
+        result_k_t_bisect = optimize.root_scalar(solow_ss_k_t_bisect, bracket=[0.1, 100], method='bisect')
+        print(result_k_t_bisect)
+        return result_k_t_bisect.root
+
+    def steady_state_output_t_bisect(self, k_star):
+        solow_ss_y_t_bisect = lambda y: y - (k_star ** self.alpha)
+        result_y_t_bisect = optimize.root_scalar(solow_ss_y_t_bisect, bracket=[0.1, 100], method='bisect')
+        print(result_y_t_bisect)
+        return result_y_t_bisect.root
     
 
     def solow_diagram(self, k, n, s, g, alpha, delta, kmax_t, kline_t):
@@ -129,4 +143,49 @@ class SolowModelTech:
                  kmax_t=widgets.IntSlider(description='x axis', min=1, max=30, step=10, value=100),
                  kline_t=widgets.FloatSlider(description='k_0', min=0, max=100, step=0.1, value=20))
 
+class Shocks:
+    def __init__(self, s, delta, n, g, alpha):
+        self.s = s
+        self.delta = delta
+        self.n = n
+        self.g = g
+        self.alpha = alpha
+            
+    def solow_diagram_s(kmax_s: int, kline_s: float, s_values: list):
+        # Definition of the values of k and the diagonal line
+        k_values_s = np.linspace(0, kmax_s, 1000)
+        diagonal_s = (n + g + delta + n*g) * k_values_s
 
+        # The figure size and the graph
+        plt.figure(figsize=(8, 5))
+        plt.plot(k_values_s, diagonal_s, label=r'$(\delta+g*n+g+n)k_t$', color='black')
+
+        # Plotting for each value of s
+        for s in s_values:
+            k_growth_s = s * k_values_s**alpha
+            plt.plot(k_values_s, k_growth_s, label=f'$s={s}$')
+
+        # Finding intersection points
+        intersection_points = []
+        for s in s_values:
+            k_growth_s = s * k_values_s**alpha
+            intersection_point = np.argwhere(np.diff(np.sign(k_growth_s - diagonal_s))).flatten()
+            intersection_points.append((k_values_s[intersection_point], k_growth_s[intersection_point]))
+        
+        # Plotting dotted lines where the diagonal line and the curves intersect each other
+        for point in intersection_points:
+            x = point[0]
+            y = point[1]
+            plt.vlines(x, 0, y, colors='r', linestyles='--', lw=1)  
+
+        # Figure details
+        plt.xlim(0, kmax_s)
+        plt.ylim(0, None)
+        plt.xlabel('$\~{k}_t$')
+        plt.ylabel('$\~{k}_{t+1}$')
+        plt.legend()
+        plt.title('The Solow Diagram with technological growth')
+        plt.grid(True)
+        plt.show()
+
+       

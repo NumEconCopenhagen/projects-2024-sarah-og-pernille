@@ -1,6 +1,6 @@
 # Model analysis project
 
-Our project is titled **The Basic Solow Model and an extension** and is about The Basic Solow Model and The Solow Model with technological growth. Furthermore we do an analysis of how the economy with technological growth will be affected by a permanent shoch to the saving rate. 
+Our project is titled **The Basic Solow Model and an extension** and is about The Basic Solow Model and The Solow Model with technological growth. Furthermore we do an analysis of how the economy with technological growth will be affected by a permanent shoch to the saving rate and techonological growth.
 
 The **results** of the project can be seen from running [modelproject.ipynb](modelproject.ipynb).
 

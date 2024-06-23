@@ -5,3 +5,5 @@ Our project is titled **The Basic Solow Model and an extension** and is about Th
 The **results** of the project can be seen from running [modelproject.ipynb](modelproject.ipynb).
 
 **Dependencies:** Apart from a standard Anaconda Python 3 installation, the project requires numpy, matplotlib.pyplot, scipy, sympy and ipywidgets.
+
+Note: We have used AI tools as a guidance to solve this project. 

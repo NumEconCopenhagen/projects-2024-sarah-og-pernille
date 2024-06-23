@@ -9,3 +9,5 @@ We apply the **following dataset**:
 1. HFUDD11.xlsx
 
 **Dependencies:** Apart from a standard Anaconda Python 3 installation, the project requires pandas, numpy, matplotlib.pyplot, seaborn, ipywidgets, matplotlib_venn and dstapi. 
+
+Note: We have used AI tools as a guidance to solve this project. 
